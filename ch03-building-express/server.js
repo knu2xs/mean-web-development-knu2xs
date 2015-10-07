@@ -1,16 +1,19 @@
 /* globals require, module*/
 
-// import and instantiate express application
-var app = require('express')();
+// set the node environment to development if parameter is not provided
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-// create route for hello world
-app.use('/', function(req, res){
-  res.send('Hello World');
-});
+// create express application instance
+var express = require('./config/express');
+
+// create our custom application instance
+var app = express();
 
 // listen on port 3000
 app.listen(3000);
-console.log('Server running at http://localhost:3000');
 
-// return the application object
+// return the application
 module.exports = app;
+
+// provide information to console
+console.log('Server running at http://localhost:3000');
