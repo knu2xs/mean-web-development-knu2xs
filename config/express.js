@@ -54,7 +54,8 @@ module.exports = function(){
   app.set('view engine', 'ejs');
 
   // import the routes, passing the application instance as a parameter
-  require('../app/routes/index.server.routes.js')(app);
+  require('../app/routes/index.server.routes')(app);
+  require('../app/routes/users.server.routes')(app);
 
   // enable serving of static files
   app.use(express.static('./public'));

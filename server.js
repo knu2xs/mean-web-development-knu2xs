@@ -3,8 +3,12 @@
 // set the node environment to development if parameter is not provided
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-// create express application instance
-var express = require('./config/express');
+// import config modules
+var mongoose = require('./config/mongoose'),
+  express = require('./config/express');
+
+// create connection to database
+var db = mongoose();
 
 // create our custom application instance
 var app = express();
