@@ -2,5 +2,7 @@
 
 // return json configuration options for a development environment
 module.exports = {
-  // development configuration options
+
+  // session secret
+  sessionSecret: 'eVbDONEiSTHuYsZtokAdajUqnMXaqeFTUaAtH84kvYiyAnAPJZ'
 };

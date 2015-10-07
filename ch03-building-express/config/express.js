@@ -1,11 +1,13 @@
 /* globals module, require, process */
 
-// import express
-var express = require('express'),
+// import modules, starting with the configuration
+var config = require('./config'),
+  express = require('express'),
   morgan = require('morgan'),
   compress = require('compression'),
   bodyParser = require('body-parser'),
-  methodOverride = require('method-override');
+  methodOverride = require('method-override'),
+  session = require('express-session');
 
 // return the application
 module.exports = function(){
@@ -37,6 +39,13 @@ module.exports = function(){
 
   // enable use of PUT and DELETE verbs where clients do not support it
   app.use(methodOverride());
+
+  // use the session module to prevent monkeying with the site
+  app.use(session({
+    saveUninitialized: true,
+    resave: true,
+    secret: config.sessionSecret
+  }));
 
   // set views directory
   app.set('views', './app/views');
