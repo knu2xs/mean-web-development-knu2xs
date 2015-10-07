@@ -4,5 +4,13 @@ var config = require('./config'),
 
 // return the connection to the database
 module.exports = function(){
-  return mongoose.connect(config.db);
+
+  // connect to mongodb instance using configuration based on environment
+  var db = mongoose.connect(config.db);
+
+  // create a user model
+  require('../app/models/user.server.model');
+
+  // return the mongoose connection
+  return db;
 };
