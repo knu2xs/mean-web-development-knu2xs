@@ -5,13 +5,17 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // import config modules
 var mongoose = require('./config/mongoose'),
-  express = require('./config/express');
+  express = require('./config/express'),
+  passport = require('./config/passport');
 
 // create connection to database
 var db = mongoose();
 
 // create our custom application instance
 var app = express();
+
+// create passport instance
+var passport = passport();
 
 // listen on port 3000
 app.listen(3000);

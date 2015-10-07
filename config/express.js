@@ -7,7 +7,8 @@ var config = require('./config'),
   compress = require('compression'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  session = require('express-session');
+  session = require('express-session'),
+  passport = require('passport');
 
 // return the application
 module.exports = function(){
@@ -52,6 +53,12 @@ module.exports = function(){
 
   // set the view engine to embedded javascript
   app.set('view engine', 'ejs');
+
+  // initialize passport authentication core
+  app.use(passport.initialize());
+
+  // ensure once authenticated, the user continues in the same session
+  app.use(passport.session());
 
   // import the routes, passing the application instance as a parameter
   require('../app/routes/index.server.routes')(app);
